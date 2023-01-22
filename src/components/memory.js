@@ -12,8 +12,12 @@ function shuffle (arg) {
 }
 
 export function Memory (props) {
-  const arr = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9])
   const [clicked, setClicked] = useState([])
+  const cards = ['Bear', 'Buffalo', 'Centipede',
+    'Crab', 'Foxtail', 'Maiden',
+    'Orchard', 'Sweet', 'Zebra'
+  ]
+  const arr = shuffle(cards)
 
   const getScore = (event) => {
     const card = event.target.id
@@ -28,19 +32,16 @@ export function Memory (props) {
     }
   }
 
-  const cards = arr.map((card) => {
+  const span = arr.map((card) => {
     return (
-      <span
-        key={card.toString()}
-        id={card}
-        onClick={getScore}
-      >
-        { card }
-      </span>
+      <div key={card.toString()} onClick={getScore} className='card'>
+        <img src={`./cards/${card}.png`} id={card}></img>
+        <p>{ card } grass</p>
+      </div>
     )
   })
   return (
-    <div id='cards'>{cards}</div>
+    <div id='card-grid'>{span}</div>
   )
 }
 
