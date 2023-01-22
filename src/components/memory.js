@@ -1,7 +1,18 @@
 import { React, useState } from 'react'
 import PropTypes from 'prop-types'
 
+function shuffle (arg) {
+  const [rand, arr] = [[], arg]
+  while (arr.length !== 0) {
+    const e = Math.floor(Math.random() * arr.length)
+    rand.push(arr[e])
+    arr.splice(e, 1)
+  }
+  return rand
+}
+
 export function Memory (props) {
+  const arr = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9])
   const [clicked, setClicked] = useState([])
 
   const getScore = (event) => {
@@ -17,7 +28,7 @@ export function Memory (props) {
     }
   }
 
-  const cards = props.list.map((card) => {
+  const cards = arr.map((card) => {
     return (
       <span
         key={card.toString()}
@@ -34,7 +45,6 @@ export function Memory (props) {
 }
 
 Memory.propTypes = {
-  list: PropTypes.array,
   setScore: PropTypes.func,
   resetScore: PropTypes.func
 }
