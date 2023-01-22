@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 export function Memory (props) {
   const cards = props.list.map((card) => {
     return (
-      <div key={card.toString()} id={card}>
+      <span key={card.toString()} id={card}>
         { card }
-      </div>
+      </span>
     )
   })
   return (
-    <div>{cards}</div>
+    <div id='cards'>{cards}</div>
   )
 }
 

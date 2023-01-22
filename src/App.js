@@ -1,10 +1,19 @@
 import React from 'react'
 import { Memory } from './components/memory'
 
+const id = []
+for (let i = 1; i < 10; i++) id.push('card' + i)
+
 function App () {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   return (
-    <Memory list={arr} />
+    <div id='wrapper'>
+      <h1 id='title'>MEMORY CARD</h1>
+      <div id='score'>
+        <div id='current'>Score:</div>
+        <div id='highest'>Highest Score:</div>
+      </div>
+      <Memory list={id} />
+    </div>
   )
 }
 
